@@ -19,8 +19,7 @@
             </Style>
         </Grid.Resources>
         <Border  >
-            <Path Fill="LightGray" >
-            </Path>
+            <Path Fill="LightGray" />
         </Border>
         <Border Background="Yellow">
             <Border.Clip >

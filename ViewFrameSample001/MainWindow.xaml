@@ -18,9 +18,8 @@
                 <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
             </Style>               
         </Grid.Resources>
-        <Border  >            
-            <Path Fill="LightGray" >              
-            </Path>
+        <Border  >
+            <Path Fill="LightGray" />
         </Border>
         <Border Background="Yellow">
             <Border.Clip >
