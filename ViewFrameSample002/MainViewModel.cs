@@ -10,7 +10,7 @@ using System.Windows.Input;
 namespace ViewFrameSample002
 {
     public abstract class NotifyPropertyChangedBase : INotifyPropertyChanged
-    {        
+    {
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)
@@ -27,7 +27,7 @@ namespace ViewFrameSample002
             OnPropertyChanged(propertyName);
             return true;
         }
-        
+
         protected virtual bool SetProperty<T>(ref T storage, T value, Action onChanged, [CallerMemberName] string propertyName = null)
         {
             if (EqualityComparer<T>.Default.Equals(storage, value))
@@ -43,7 +43,7 @@ namespace ViewFrameSample002
             private Action<object> _executeHandler;
             private Func<object, bool> _canExecuteHandler;
 
-            public event EventHandler CanExecuteChanged;            
+            public event EventHandler CanExecuteChanged;
 
             public RelayCommand(Action<object> executeHandler, Func<object, bool> canExecuteHandler)
             {
@@ -83,7 +83,7 @@ namespace ViewFrameSample002
         public double Angle
         {
             get => _angle;
-            set => SetProperty (ref _angle , value );
+            set => SetProperty(ref _angle, value);
         }
 
         private double _scaleX;
@@ -108,7 +108,7 @@ namespace ViewFrameSample002
         }
 
         private double _translateY;
-      
+
 
         public double TranslateY
         {
@@ -129,7 +129,7 @@ namespace ViewFrameSample002
                     {
                         string parameter = x as string;
                         if (parameter == null) { return; }
-                        switch(parameter)
+                        switch (parameter)
                         {
                             case "up":
                                 TranslateY -= 5;
@@ -162,9 +162,5 @@ namespace ViewFrameSample002
                 return _operationCommand;
             }
         }
-
-
     }
-
-
 }
