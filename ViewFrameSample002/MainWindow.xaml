@@ -6,7 +6,14 @@
         xmlns:local="clr-namespace:ViewFrameSample002"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:MainViewModel />
+    </Window.DataContext>
     <Grid>
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
         <Grid.Resources >
             <Style TargetType= "Border">
                 <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -29,13 +36,34 @@
                 <Path.RenderTransform>
                     <TransformGroup>
                         <TransformGroup.Children>
-                            <RotateTransform Angle="0" />
-                            <ScaleTransform ScaleX="1" ScaleY="1" />
-                            <TranslateTransform X="0"/>
+                            <RotateTransform Angle="{Binding Angle}" />
+                            <ScaleTransform ScaleX="{Binding ScaleX}" ScaleY="{Binding ScaleY}" />
+                            <TranslateTransform X="{Binding TranslateX}" Y="{Binding TranslateY}"/>
                         </TransformGroup.Children>
                     </TransformGroup>
                 </Path.RenderTransform>
             </Path>
         </Border>
+        <Grid Grid.Column="1" >
+            <Grid.Resources >
+                <Style TargetType="Butotn">
+                    <Setter Property="Width" Value="32"/>
+                    <Setter Property="Height" Value="32"/>
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions >
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <Button Content="上" Grid.Row="0" Grid.Column="1"/>
+        </Grid>
     </Grid>
 </Window>

@@ -66,9 +66,43 @@ namespace ViewFrameSample002
         }
 
     }
-    public class MainViewModel
+    public class MainViewModel : NotifyPropertyChangedBase
     {
+        private double _angle;
 
+        public double Angle
+        {
+            get => _angle;
+            set => SetProperty (ref _angle , value );
+        }
+
+        private double _scaleX;
+        public double ScaleX
+        {
+            get => _scaleX;
+            set => SetProperty(ref _scaleX, value);
+        }
+
+        private double _scaleY;
+        public double ScaleY
+        {
+            get => _scaleY;
+            set => SetProperty(ref _scaleY, value);
+        }
+
+        private double _translateX;
+        public double TranslateX
+        {
+            get => _translateX;
+            set => SetProperty(ref _translateX, value);
+        }
+
+        private double _translateY;
+        public double TranslateY
+        {
+            get => _translateY;
+            set => SetProperty(ref _translateY, value);
+        }
     }
 
 
