@@ -68,6 +68,16 @@ namespace ViewFrameSample002
     }
     public class MainViewModel : NotifyPropertyChangedBase
     {
+
+        public MainViewModel()
+        {
+            Angle = 0;
+            ScaleX = 1;
+            ScaleY = 1;
+            TranslateX = 0;
+            TranslateY = 0;
+        }
+
         private double _angle;
 
         public double Angle
@@ -98,11 +108,62 @@ namespace ViewFrameSample002
         }
 
         private double _translateY;
+      
+
         public double TranslateY
         {
             get => _translateY;
             set => SetProperty(ref _translateY, value);
         }
+
+        private Dictionary<string, Action> _operations;
+
+        private ICommand _operationCommand;
+        public ICommand OperationCommand
+        {
+            get
+            {
+                if (_operationCommand == null)
+                {
+                    _operationCommand = new RelayCommand((x) =>
+                    {
+                        string parameter = x as string;
+                        if (parameter == null) { return; }
+                        switch(parameter)
+                        {
+                            case "up":
+                                TranslateY -= 5;
+                                return;
+                            case "down":
+                                TranslateY += 5;
+                                return;
+                            case "left":
+                                TranslateX -= 5;
+                                return;
+                            case "right":
+                                TranslateX += 5;
+                                return;
+                            case "center":
+                                TranslateX = 0;
+                                TranslateY = 0;
+                                return;
+                            case "angle":
+                                Angle = 0;
+                                return;
+                            case "size":
+                                ScaleX = 1;
+                                ScaleY = 1;
+                                return;
+                            default:
+                                return;
+                        }
+                    });
+                }
+                return _operationCommand;
+            }
+        }
+
+
     }
 
 

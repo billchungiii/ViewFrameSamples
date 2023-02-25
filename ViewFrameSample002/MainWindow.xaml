@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ViewFrameSample002"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="800" Width="1000">
     <Window.DataContext>
         <local:MainViewModel />
     </Window.DataContext>
@@ -28,11 +28,11 @@
         <Border  >
             <Path Fill="LightGray" />
         </Border>
-        <Border Background="Yellow">
+        <Border Background="Yellow" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Border.Clip >
-                <RectangleGeometry Rect="100,100,200,200"/>
+                <RectangleGeometry Rect="100,100,300,300"/>
             </Border.Clip>
-            <Path  Fill="#FF0000FF">
+            <Path  Fill="#FF0000FF" RenderTransformOrigin="0.5,0.5">
                 <Path.RenderTransform>
                     <TransformGroup>
                         <TransformGroup.Children>
@@ -44,11 +44,13 @@
                 </Path.RenderTransform>
             </Path>
         </Border>
-        <Grid Grid.Column="1" >
+        <Grid Grid.Column="1" Margin="6">
             <Grid.Resources >
                 <Style TargetType="Button">
                     <Setter Property="Width" Value="32"/>
                     <Setter Property="Height" Value="32"/>
+                    <Setter Property="Margin" Value="2"/>
+                    <Setter Property="Command" Value="{Binding OperationCommand}"/>
                 </Style>
             </Grid.Resources>
             <Grid.ColumnDefinitions >
@@ -57,13 +59,26 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions >
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="3*"/>
-                <RowDefinition Height="3*"/>
+                <RowDefinition Height="36"/>
+                <RowDefinition Height="36"/>
+                <RowDefinition Height="36"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
-            <Button Content="上" Grid.Row="0" Grid.Column="1"/>
+            <Button Content="上" Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" CommandParameter="up"/>
+            <Button Content="下" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" CommandParameter="down"/>
+            <Button Content="左" Grid.Row="1" Grid.Column="0" CommandParameter="left"/>
+            <Button Content="右" Grid.Row="1" Grid.Column="2" CommandParameter="right"/>
+            <Button Content="中" Grid.Row="1" Grid.Column="1" Margin="0" CommandParameter="center"/>
+            <Slider Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center" Value="{Binding Angle}"
+                    Minimum="0" Maximum="360"/>
+            <Button Content="0度" Grid.Row="3" Grid.Column="2" CommandParameter="angle"/>
+            <Slider Grid.Row="4" Grid.ColumnSpan="2" VerticalAlignment="Center" Value="{Binding ScaleX}"
+                    Minimum="0" Maximum="5" />
+            <Slider Grid.Row="5" Grid.ColumnSpan="2" VerticalAlignment="Center" Value="{Binding ScaleY}"
+                    Minimum="0" Maximum="5"/>
+            <Button Content="原" Grid.Row="4" Grid.Column="2" CommandParameter="size" />
         </Grid>
     </Grid>
 </Window>
