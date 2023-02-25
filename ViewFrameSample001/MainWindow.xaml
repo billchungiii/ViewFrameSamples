@@ -42,6 +42,12 @@
             </Path>
         </Border>
         <Grid Grid.Column="1" >
+            <Grid.Resources >
+                <Style TargetType="Butotn">
+                    <Setter Property="Width" Value="32"/>
+                    <Setter Property="Height" Value="32"/>
+                </Style>
+            </Grid.Resources>
             <Grid.ColumnDefinitions >
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -54,6 +60,7 @@
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
+            <Button Content="上" Grid.Row="0" Grid.Column="1"/>
         </Grid>
     </Grid>
 </Window>
