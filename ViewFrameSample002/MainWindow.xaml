@@ -46,7 +46,7 @@
         </Border>
         <Grid Grid.Column="1" >
             <Grid.Resources >
-                <Style TargetType="Butotn">
+                <Style TargetType="Button">
                     <Setter Property="Width" Value="32"/>
                     <Setter Property="Height" Value="32"/>
                 </Style>
